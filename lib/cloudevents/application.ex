@@ -15,8 +15,8 @@ defmodule Cloudevents.Application do
 
   @impl true
   def start(_type, opts) do
-    avrora_opts = Keyword.get(opts, :avrora, Application.get_env(:pulsar_avro_cloudevents, :avrora, []))
-    Application.put_env(:avrora, :avrora, avrora_opts)
+    avrora_opts = Keyword.get(opts, :avrora, Application.get_all_env(:pulsar_avro_cloudevents))
+    Application.put_all_env([{:avrora, avrora_opts}])
 
     children = [
       Avrora

@@ -5,16 +5,26 @@ defmodule PulsarAvroCloudevents.Application do
 
   use Application
 
+  @app_supervisor PulsarAvroCloudevents.Supervisor
+
+  def start(config) do
+    start(:normal, config)
+  end
+
+  def start_link(config), do: start(config)
+
   @impl true
-  def start(_type, _args) do
+  def start(_type, opts) do
+    avrora_opts = Keyword.get(opts, :avrora, Application.get_env(:pulsar_avro_cloudevents, :avrora, []))
+    Application.put_env(:avrora, :avrora, avrora_opts)
+
     children = [
-      # Starts a worker by calling: PulsarAvroCloudevents.Worker.start_link(arg)
-      # {PulsarAvroCloudevents.Worker, arg}
+      Avrora
     ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: PulsarAvroCloudevents.Supervisor]
-    Supervisor.start_link(children, opts)
+    sup_opts = [strategy: :one_for_one, name: @app_supervisor]
+    {:ok, pid} = Supervisor.start_link(children, sup_opts)
+
+    {:ok, pid}
   end
 end

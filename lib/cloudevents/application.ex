@@ -23,8 +23,6 @@ defmodule Cloudevents.Application do
     ]
 
     sup_opts = [strategy: :one_for_one, name: @app_supervisor]
-    {:ok, pid} = Supervisor.start_link(children, sup_opts)
-
-    {:ok, pid}
+    Supervisor.start_link(children, sup_opts)
   end
 end

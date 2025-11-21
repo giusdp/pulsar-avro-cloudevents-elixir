@@ -5,4 +5,5 @@
   "jsone": {:hex, :jsone, "1.8.1", "6bc74d3863d55d420077346da97c601711017a057f2fd1df65d6d65dd562fbab", [:rebar3], [], "hexpm", "c78918124148c51a7a84c678e39bbc6281f8cb582f1d88584628a98468e99738"},
   "snappyer": {:hex, :snappyer, "1.2.9", "9cc58470798648ce34c662ca0aa6daae31367667714c9a543384430a3586e5d3", [:rebar3], [], "hexpm", "18d00ca218ae613416e6eecafe1078db86342a66f86277bd45c95f05bf1c8b29"},
   "styler": {:hex, :styler, "1.9.1", "e30f0e909c02c686c75e47c07a76986483525eeb23c4d136f00dfa1c25fc6499", [:mix], [], "hexpm", "f583bedd92515245801f9ad504766255a27ecd5714fc4f1fd607de0eb951e1cf"},
+  "typed_struct": {:hex, :typed_struct, "0.3.0", "939789e3c1dca39d7170c87f729127469d1315dcf99fee8e152bb774b17e7ff7", [:mix], [], "hexpm", "c50bd5c3a61fe4e198a8504f939be3d3c85903b382bde4865579bc23111d1b6d"},
 }

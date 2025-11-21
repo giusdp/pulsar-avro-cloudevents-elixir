@@ -1,4 +1,4 @@
-defmodule PulsarAvroCloudevents.MixProject do
+defmodule Cloudevents.MixProject do
   use Mix.Project
 
   def project do
@@ -15,7 +15,7 @@ defmodule PulsarAvroCloudevents.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {PulsarAvroCloudevents.Application, []}
+      mod: {Cloudevents.Application, []}
     ]
   end
 

@@ -1,6 +1,6 @@
-defmodule PulsarAvroCloudevents do
+defmodule Cloudevents do
   @moduledoc """
-  Documentation for `PulsarAvroCloudevents`.
+  Documentation for `Cloudevents`.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule PulsarAvroCloudevents do
 
   ## Examples
 
-      iex> PulsarAvroCloudevents.hello()
+      iex> Cloudevents.hello()
       :world
 
   """

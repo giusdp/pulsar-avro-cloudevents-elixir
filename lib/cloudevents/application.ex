@@ -1,11 +1,11 @@
-defmodule PulsarAvroCloudevents.Application do
+defmodule Cloudevents.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
 
   use Application
 
-  @app_supervisor PulsarAvroCloudevents.Supervisor
+  @app_supervisor Cloudevents.Supervisor
 
   def start(config) do
     start(:normal, config)

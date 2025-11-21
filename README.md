@@ -1,4 +1,4 @@
-# PulsarAvroCloudeventsElixir
+# PulsarAvroCloudevents
 
 **TODO: Add description**
 

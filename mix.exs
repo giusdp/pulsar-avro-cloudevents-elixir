@@ -1,9 +1,9 @@
-defmodule PulsarAvroCloudeventsElixir.MixProject do
+defmodule PulsarAvroCloudevents.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :pulsar_avro_cloudevents_elixir,
+      app: :pulsar_avro_cloudevents,
       version: "0.1.0",
       elixir: "~> 1.18",
       start_permanent: Mix.env() == :prod,
@@ -15,7 +15,7 @@ defmodule PulsarAvroCloudeventsElixir.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {PulsarAvroCloudeventsElixir.Application, []}
+      mod: {PulsarAvroCloudevents.Application, []}
     ]
   end
 

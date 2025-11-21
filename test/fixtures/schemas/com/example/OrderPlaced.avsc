@@ -1,0 +1,40 @@
+{
+  "type": "record",
+  "namespace": "com.example",
+  "name": "OrderPlaced",
+  "doc": "CloudEvent for order placement following CloudEvents Avro format - shows extension attributes",
+  "fields": [
+    {
+      "name": "attribute",
+      "type": {
+        "type": "map",
+        "values": ["null", "boolean", "int", "string", "bytes"]
+      },
+      "doc": "CloudEvent context attributes and extensions (priority, traceid, etc.)"
+    },
+    {
+      "name": "data",
+      "type": [
+        "null",
+        {
+          "type": "record",
+          "name": "OrderPlacedData",
+          "doc": "Domain-specific order data",
+          "fields": [
+            {
+              "name": "orderid",
+              "type": "string",
+              "doc": "The ID of the placed order"
+            },
+            {
+              "name": "amount",
+              "type": "double",
+              "doc": "Order amount"
+            }
+          ]
+        }
+      ],
+      "doc": "Event payload - domain-specific order data"
+    }
+  ]
+}

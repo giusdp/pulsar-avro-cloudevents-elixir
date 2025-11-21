@@ -1,0 +1,45 @@
+{
+  "type": "record",
+  "namespace": "com.example",
+  "name": "UserCreated",
+  "doc": "CloudEvent for user creation following CloudEvents Avro format specification",
+  "fields": [
+    {
+      "name": "attribute",
+      "type": {
+        "type": "map",
+        "values": ["null", "boolean", "int", "string", "bytes"]
+      },
+      "doc": "CloudEvent context attributes (specversion, type, source, id, etc.) and extension attributes"
+    },
+    {
+      "name": "data",
+      "type": [
+        "null",
+        {
+          "type": "record",
+          "name": "UserCreatedData",
+          "doc": "Domain-specific user creation data",
+          "fields": [
+            {
+              "name": "userid",
+              "type": "string",
+              "doc": "The ID of the created user"
+            },
+            {
+              "name": "email",
+              "type": "string",
+              "doc": "User's email address"
+            },
+            {
+              "name": "createdat",
+              "type": "long",
+              "doc": "Unix timestamp when user was created"
+            }
+          ]
+        }
+      ],
+      "doc": "Event payload - domain-specific user data"
+    }
+  ]
+}

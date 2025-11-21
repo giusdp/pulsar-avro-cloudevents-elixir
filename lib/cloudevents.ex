@@ -4,6 +4,41 @@ defmodule Cloudevents do
   alias Cloudevents.Event
 
   @doc """
+  Parses a Pulsar message as a Cloudevent using Avro encoding.
+
+  The message body should contain an Avro-encoded record that includes both CloudEvent
+  context attributes (specversion, type, source, id) and your domain-specific data fields.
+  Uses the embedded Avro schema from the message.
+
+  ## Parameters
+  - `pulsar_body` - The Pulsar message body (Avro-encoded binary with embedded schema)
+
+  ## Examples
+
+      {:ok, event} = Cloudevents.from_pulsar_message(body)
+  """
+  @spec from_pulsar_message(binary()) :: {:ok, Event.t()} | {:error, any}
+  defdelegate from_pulsar_message(pulsar_body), to: Cloudevents.Decoder, as: :decode
+
+  @spec from_pulsar_message(binary(), String.t()) :: {:ok, Event.t()} | {:error, any}
+  defdelegate from_pulsar_message(pulsar_body, schema_name), to: Cloudevents.Decoder, as: :decode
+
+  @doc """
+  Same as `from_pulsar_message/2` but raises on error.
+
+  ## Examples
+
+      event = Cloudevents.from_pulsar_message!(body, headers)
+  """
+  @spec from_pulsar_message!(binary()) :: Event.t()
+  def from_pulsar_message!(pulsar_body) do
+    case from_pulsar_message(pulsar_body) do
+      {:ok, event} -> event
+      {:error, error} -> raise error
+    end
+  end
+
+  @doc """
   Encodes a CloudEvent to a Pulsar message using Avro encoding.
 
   The entire CloudEvent structure (including all context attributes and domain data fields)
